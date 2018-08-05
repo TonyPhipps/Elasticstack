@@ -1,1 +1,1 @@
-### Check out the Wiki for install steps, admin notes, etc.
+### Check out the [Wiki](https://github.com/TonyPhipps/THRecon-Elasticstack/wiki) for install steps, admin notes, etc.
