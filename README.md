@@ -1,2 +1,1 @@
-# THRecon-Elasticstack
-FIle and guides related to integrating THRecon with Elasticstack
+### Check out the Wiki for install steps, admin notes, etc.
