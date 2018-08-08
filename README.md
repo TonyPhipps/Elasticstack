@@ -187,6 +187,8 @@ Add this to filebeat.yml in the filebeat.inputs: section
   symlinks: true
 ```
 
+### [Administration and Other Operational Notes](https://github.com/TonyPhipps/THRecon-Elasticstack/blob/master/Administration.md)
+
 ### Sources
 * https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html
 * https://www.howtoforge.com/tutorial/ubuntu-elastic-stack/
