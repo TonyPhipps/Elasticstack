@@ -1,4 +1,5 @@
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*ADS*.csv
     - /var/log/threcon/*ads*.csv
@@ -8,6 +9,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*ARP*.csv
     - /var/log/threcon/*arp*.csv
@@ -17,6 +19,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
   - /var/log/threcon/*Autoruns*.csv
   - /var/log/threcon/*autoruns*.csv
@@ -26,6 +29,7 @@
   
 
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*BitLocker*.csv
     - /var/log/threcon/*bitlocker*.csv
@@ -35,6 +39,7 @@
   
 
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*Certificates*.csv
     - /var/log/threcon/*certificates*.csv
@@ -44,6 +49,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*Computer*.csv
     - /var/log/threcon/*computer*.csv
@@ -53,6 +59,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*DLLs*.csv
     - /var/log/threcon/*dlls*.csv
@@ -62,6 +69,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*DNS*.csv
     - /var/log/threcon/*dns*.csv
@@ -71,6 +79,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*Drivers*.csv
     - /var/log/threcon/*drivers*.csv
@@ -80,6 +89,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*EnvVars*.csv
     - /var/log/threcon/*envvars*.csv
@@ -89,6 +99,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*EventLogs*.csv
     - /var/log/threcon/*eventlogs*.csv
@@ -98,6 +109,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
   - /var/log/threcon/*GroupMembers*.csv
   - /var/log/threcon/*groupmembers*.csv
@@ -107,6 +119,7 @@
   
 
 - type: log
+  symlinks: true
   paths: 
   - /var/log/threcon/*Hardware*.csv
   - /var/log/threcon/*hardware*.csv
@@ -116,6 +129,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*Hosts*.csv
     - /var/log/threcon/*hosts*.csv
@@ -125,6 +139,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*Hotfixes*.csv
     - /var/log/threcon/*hotfixes*.csv
@@ -134,6 +149,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*MAC*.csv
     - /var/log/threcon/*mac*.csv
@@ -143,6 +159,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*MRU*.csv
     - /var/log/threcon/*mru*.csv
@@ -152,6 +169,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*NetAdapters*.csv
     - /var/log/threcon/*netadapters*.csv
@@ -161,6 +179,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*NetRoute*.csv
     - /var/log/threcon/*netroute*.csv
@@ -170,6 +189,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*Processes*.csv
     - /var/log/threcon/*processes*.csv
@@ -179,6 +199,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*RecycleBin*.csv
     - /var/log/threcon/*recyclebin*.csv
@@ -188,6 +209,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*Registry*.csv
     - /var/log/threcon/*registry*.csv
@@ -197,6 +219,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*ScheduledTasks*.csv
     - /var/log/threcon/*scheduledtasks*.csv
@@ -206,6 +229,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*Services*.csv
     - /var/log/threcon/*services*.csv
@@ -215,6 +239,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*Sessions*.csv
     - /var/log/threcon/*sessions*.csv
@@ -224,6 +249,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*Shares*.csv
     - /var/log/threcon/*shares*.csv
@@ -233,6 +259,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*Software*.csv
     - /var/log/threcon/*software*.csv
@@ -242,6 +269,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*Strings*.csv
     - /var/log/threcon/*strings*.csv
@@ -251,6 +279,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*TCPConnections*.csv
     - /var/log/threcon/*tcpconnections*.csv
@@ -260,6 +289,7 @@
   
   
 - type: log
+  symlinks: true
   paths: 
     - /var/log/threcon/*TPM*.csv
     - /var/log/threcon/*tpm*.csv
