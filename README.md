@@ -1,4 +1,6 @@
-This guide was written while building the Elasticstack on Xubuntu 18.04.1.
+## Ingest [THRecon](https://github.com/TonyPhipps/THRecon) into [Elasticstack](https://github.com/elastic)!
+
+This guide was written primarily with [Xubuntu](https://xubuntu.org/about/) 18.04.1 in mind, but can easily be adjusted to any other distribution.
 
 ### Install Java
 ```
