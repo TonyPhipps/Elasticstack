@@ -1,6 +1,6 @@
 _work in progress!_
 
-This aims to install Elasticstack via Docker on Xubuntu 18.04. YMMV.
+This aims to install Elasticstack 6.3 via Docker on Xubuntu 18.04. YMMV.
 
 ## Install Docker from Official Repo
 ```
