@@ -35,7 +35,7 @@ docker-compose -f .\setup.yml up
 ```
 **SAVE THE PASSWORD PRESENTED AT THE END!**
 
-### Configure HTTPS
+### Configure HTTPS -- not working yet
 Navigate to each product's main .yml file under /user/share/elastic/config and modify the following lines
 ```
 setup.kibana:
@@ -54,13 +54,13 @@ docker-compose up -d
 ```
 infconfig eth0
 ```
-Visit https://0.0.0.0:5601 for Kibana (with your eth0 IP address)
+Visit http://0.0.0.0:5601 for Kibana (with your eth0 IP address)
 
 Username: kibana
 
 Password: Given earlier
 
-Visit https://0.0.0.0:9200 for Elastic (with your eth0 IP address)
+Visit http://0.0.0.0:9200 for Elastic (with your eth0 IP address)
 
 Username: elastic
 
