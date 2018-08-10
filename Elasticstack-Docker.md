@@ -45,9 +45,13 @@ docker-compose up -d
 infconfig eth0
 ```
 Visit https://0.0.0.0:5601 for Kibana (with your eth0 IP address)
+
 Username: kibana
+
 Password: Given earlier
 
 Visit https://0.0.0.0:9200 for Elastic (with your eth0 IP address)
+
 Username: elastic
+
 Password: Given earlier
