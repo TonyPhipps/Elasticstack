@@ -33,3 +33,21 @@ echo 'PWD=/usr/share/elastic/' >> /usr/share/elastic/.env
 ```
 docker-compose -f .\setup.yml up
 ```
+**SAVE THE PASSWORD PRESENTED AT THE END!**
+
+### Run Container
+```
+docker-compose up -d
+```
+
+### Access Kibana/Elastic
+```
+infconfig eth0
+```
+Visit https://0.0.0.0:5601 for Kibana (with your eth0 IP address)
+Username: kibana
+Password: Given earlier
+
+Visit https://0.0.0.0:9200 for Elastic (with your eth0 IP address)
+Username: elastic
+Password: Given earlier
