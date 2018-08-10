@@ -35,6 +35,16 @@ docker-compose -f .\setup.yml up
 ```
 **SAVE THE PASSWORD PRESENTED AT THE END!**
 
+### Configure HTTPS
+Navigate to each product's main .yml file under /user/share/elastic/config and modify the following lines
+```
+setup.kibana:
+...
+  protocol: "https"
+  ssl.enabled: true
+...
+```
+
 ### Run Container
 ```
 docker-compose up -d
