@@ -55,3 +55,37 @@ Visit http://0.0.0.0:9200 for Elastic (with your eth0 IP address)
 Username: elastic
 
 Password: Given earlier
+
+
+### Enable HTTPS
+
+set the following values in the following config files
+- `/user/share/elastic/config/apm-server/apm-server.yml`
+- `/user/share/elastic/config/auditbeat/auditbeat.yml`
+- `/user/share/elastic/config/filebeat/filebeat.yml`
+- `/user/share/elastic/config/heartbeat/heartbeat.yml`
+- `/user/share/elastic/config/metricbeat/metricbeat.yml`
+- `/user/share/elastic/config/packetbeat/packetbeat.yml`
+
+```
+setup.kibana:
+host: "https://localhost:5601"
+protocol: "https"
+ssl.enabled: true
+```
+
+set the following values in `/user/share/elastic/config/kibana/kibana.yml`
+
+```
+server.ssl.enabled: true
+server.ssl.certificate: /usr/share/kibana/config/certs/kibana/kibana.crt
+server.ssl.key: /usr/share/kibana/config/certs/kibana/kibana.key
+```
+
+Then restart the stack
+
+```
+docker-compose restart
+```
+
+(Monitor status via `docker container ls`, and know that it takes a minute or so after containers are "healthy", and more time for Kibana to successfully connect to the elasticsearch service)
