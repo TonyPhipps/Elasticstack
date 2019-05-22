@@ -1,0 +1,230 @@
+# https://www.elastic.co/guide/en/logstash/current/plugins-filters-csv.html
+
+input {
+  beats {
+    port => 31337
+  }
+}
+
+
+filter {
+  if "threcon" in [tags] {
+    date {
+      match => [ "DateScanned", "ISO8601" ]
+      target => "DateScanned"
+    }
+    mutate {
+      lowercase => [ "message" ]
+    }
+  }
+
+
+
+output {
+  if "threcon" in [tags] { 
+    stdout { codec => rubydebug } 
+  }
+
+  if "ads" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-ads-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "autoruns" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-autoruns-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "bitlocker" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-bitlocker-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "certificates" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-certificates-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "computer" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-computer-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "dlls" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-dlls-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "dns" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-dns-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "drivers" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-drivers-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "envvars" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-envvars-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "eventlogs" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-eventlogs-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "groupmembers" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-groupmembers-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "hardware" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-hardware-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "hosts" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-hosts-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "hotfixes" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-hotfixes-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "mac" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-mac-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "mru" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-mru-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "netadapters" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-netadapters-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "netroute" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-netroute-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "processes" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-processes-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "recylcebin" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-recyclebin-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "registry" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-registry-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "scheduledtasks" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-scheduledtasks-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "services" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-services-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "sessions" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-sessions-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "shares" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-shares-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "softwtare" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-software-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "strings" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-strings-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "tcpconnections" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-tcpconnections-%{+YYYY.MM.dd}"
+    }
+  }
+
+  if "tpm" in [tags] {
+    elasticsearch {
+      hosts => ["localhost:9200"]
+      index => "logs-endpoint-threcon-tpm-%{+YYYY.MM.dd}"
+    }
+  }
+}
