@@ -1,230 +1,209 @@
-# https://www.elastic.co/guide/en/logstash/current/plugins-filters-csv.html
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*ADS*.csv
+    - C:/THRecon/*ads*.csv
+  tags: ["threcon","ads"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*ARP*.csv
+    - C:/THRecon/*arp*.csv
+  tags: ["threcon","arp"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+  - C:/THRecon/*Autoruns*.csv
+  - C:/THRecon/*autoruns*.csv
+  tags: ["threcon","autoruns"]  
 
-input {
-  beats {
-    port => 31337
-  }
-}
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*BitLocker*.csv
+    - C:/THRecon/*bitlocker*.csv
+  tags: ["threcon","bitlocker"]  
 
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*Certificates*.csv
+    - C:/THRecon/*certificates*.csv
+  tags: ["threcon","certificates"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*Computer*.csv
+    - C:/THRecon/*computer*.csv
+  tags: ["threcon","computer"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*DLLs*.csv
+    - C:/THRecon/*dlls*.csv
+  tags: ["threcon","dlls"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*DNS*.csv
+    - C:/THRecon/*dns*.csv
+  tags: ["threcon","dns"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*Drivers*.csv
+    - C:/THRecon/*drivers*.csv
+  tags: ["threcon","drivers"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*EnvVars*.csv
+    - C:/THRecon/*envvars*.csv
+  tags: ["threcon","envvars"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*EventLogs*.csv
+    - C:/THRecon/*eventlogs*.csv
+  tags: ["threcon","eventlogs"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+  - C:/THRecon/*GroupMembers*.csv
+  - C:/THRecon/*groupmembers*.csv
+  tags: ["threcon","groupmembers"]  
 
-filter {
-  if "threcon" in [tags] {
-    date {
-      match => [ "DateScanned", "ISO8601" ]
-      target => "DateScanned"
-    }
-    mutate {
-      lowercase => [ "message" ]
-    }
-  }
-
-
-
-output {
-  if "threcon" in [tags] { 
-    stdout { codec => rubydebug } 
-  }
-
-  if "ads" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-ads-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "autoruns" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-autoruns-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "bitlocker" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-bitlocker-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "certificates" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-certificates-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "computer" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-computer-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "dlls" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-dlls-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "dns" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-dns-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "drivers" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-drivers-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "envvars" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-envvars-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "eventlogs" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-eventlogs-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "groupmembers" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-groupmembers-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "hardware" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-hardware-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "hosts" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-hosts-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "hotfixes" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-hotfixes-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "mac" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-mac-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "mru" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-mru-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "netadapters" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-netadapters-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "netroute" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-netroute-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "processes" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-processes-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "recylcebin" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-recyclebin-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "registry" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-registry-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "scheduledtasks" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-scheduledtasks-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "services" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-services-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "sessions" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-sessions-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "shares" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-shares-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "softwtare" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-software-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "strings" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-strings-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "tcpconnections" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-tcpconnections-%{+YYYY.MM.dd}"
-    }
-  }
-
-  if "tpm" in [tags] {
-    elasticsearch {
-      hosts => ["localhost:9200"]
-      index => "logs-endpoint-threcon-tpm-%{+YYYY.MM.dd}"
-    }
-  }
-}
+- type: log
+  symlinks: true
+  paths: 
+  - C:/THRecon/*Hardware*.csv
+  - C:/THRecon/*hardware*.csv
+  tags: ["threcon","hardware"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*Hosts*.csv
+    - C:/THRecon/*hosts*.csv
+  tags: ["threcon","hosts"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*Hotfixes*.csv
+    - C:/THRecon/*hotfixes*.csv
+  tags: ["threcon","hotfixes"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*MAC*.csv
+    - C:/THRecon/*mac*.csv
+  tags: ["threcon","mac"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*MRU*.csv
+    - C:/THRecon/*mru*.csv
+  tags: ["threcon","mru"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*NetAdapters*.csv
+    - C:/THRecon/*netadapters*.csv
+  tags: ["threcon","netadapters"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*NetRoute*.csv
+    - C:/THRecon/*netroute*.csv
+  tags: ["threcon","netroute"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*Processes*.csv
+    - C:/THRecon/*processes*.csv
+  tags: ["threcon","processes"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*RecycleBin*.csv
+    - C:/THRecon/*recyclebin*.csv
+  tags: ["threcon","recyclebin"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*Registry*.csv
+    - C:/THRecon/*registry*.csv
+  tags: ["threcon","registry"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*ScheduledTasks*.csv
+    - C:/THRecon/*scheduledtasks*.csv
+  tags: ["threcon","scheduledtasks"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*Services*.csv
+    - C:/THRecon/*services*.csv
+  tags: ["threcon","services"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*Sessions*.csv
+    - C:/THRecon/*sessions*.csv
+  tags: ["threcon","sessions"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*Shares*.csv
+    - C:/THRecon/*shares*.csv
+  tags: ["threcon","shares"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*Software*.csv
+    - C:/THRecon/*software*.csv
+  tags: ["threcon","software"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*Strings*.csv
+    - C:/THRecon/*strings*.csv
+  tags: ["threcon","strings"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*TCPConnections*.csv
+    - C:/THRecon/*tcpconnections*.csv
+  tags: ["threcon","tcpconnections"]  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - C:/THRecon/*TPM*.csv
+    - C:/THRecon/*tpm*.csv
+  tags: ["threcon","tpm"]
