@@ -1,191 +1,192 @@
+- [Elasticsearch](#elasticsearch)
+  - [Install](#install)
+  - [Configure](#configure)
+  - [Start at Boot](#start-at-boot)
+  - [Manage Service](#manage-service)
+  - [Check Status](#check-status)
+- [Kibana](#kibana)
+  - [Install](#install-1)
+  - [Configure](#configure-1)
+  - [Start at Boot](#start-at-boot-1)
+  - [Manage Service](#manage-service-1)
+- [Logstash](#logstash)
+  - [Install](#install-2)
+  - [Configure](#configure-2)
+  - [Start at Boot](#start-at-boot-2)
+  - [Manage Service](#manage-service-2)
+  - [Monitor](#monitor)
+- [Filebeat](#filebeat)
+  - [Install](#install-3)
+  - [Configure](#configure-3)
+  - [Start at Boot](#start-at-boot-3)
+  - [Monitor](#monitor-1)
+
 ## Ingest [THRecon](https://github.com/TonyPhipps/THRecon) into [Elasticstack](https://github.com/elastic)!
 
 This guide was written primarily with [Xubuntu](https://xubuntu.org/about/) 18.04.1 in mind, but can easily be adjusted to any other distribution.
 
-### Install Java
-```
-sudo apt-get update
-sudo apt-get install -y python-software-properties software-properties-common apt-transport-https
-sudo add-apt-repository ppa:webupd8team/java -y
-sudo apt-get update
-sudo apt-get install -y oracle-java8-installer
-java -version
-```
 
+# Elasticsearch
+Condensed version of the below guide compiled using Xubuntu
+https://www.elastic.co/guide/en/elasticsearch/reference/7.1/deb.html#deb-repo
 
-### Install Elasticsearch
+## Install
 ```
+apt-get update
+apt-get install curl
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-sudo apt-get install apt-transport-https
-echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
-sudo apt-get update
-sudo apt-get install elasticsearch
+apt-get install apt-transport-https
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+apt-get update && sudo apt-get install elasticsearch
 ```
 
-#### Configure ElasticSearch to listen on 9200
+## Configure
+Edit /etc/elasticsearch/elasticsearch.yml
 ```
-sudo mousepad /etc/elasticsearch/elasticsearch.yml
-```
-
-Remove comments on these lines
-```
-network.host: localhost
-http.port: 9200
+network.host: 0.0.0.0
+cluster.initial_master_nodes: ["node-1", "node-2"]
 ```
 
-#### Configure ElasticSearch to run on startup and restart
+## Start at Boot
 ```
-sudo update-rc.d elasticsearch defaults 95 10
-sudo -i service elasticsearch restart
-```
-
-After a minute, verify listening on port 5900
-```
-netstat -plntu
+/bin/systemctl daemon-reload
+/bin/systemctl enable elasticsearch.service
 ```
 
-### Install Kibana
+## Manage Service
 ```
-sudo apt-get install -y kibana
-```
-
-#### Configure Kibana
-```
-sudo mousepad /etc/kibana/kibana.yml &
+systemctl stop elasticsearch.service
+systemctl start elasticsearch.service
+systemctl restart elasticsearch.service
 ```
 
-Ucomment lines:
+## Check Status
 ```
-server.port: 5601
-server.host: "localhost"
-elasticsearch.url: "http://localhost:9200"
-```
-
-#### Configure Kibana to run on startup and restart
-```
-sudo update-rc.d kibana defaults 95 10
-sudo -i service kibana restart
+systemctl status elasticsearch.service
+curl -X GET http://127.0.0.1:9200
 ```
 
-After a minute, verify listening on port 5601
+# Kibana
+Condensed version of the below guide compiled using Xubuntu
+https://www.elastic.co/guide/en/kibana/7.1/install.html
+
+## Install
 ```
-netstat -plntu
+apt-get update && sudo apt-get install kibana
 ```
 
-### Install Nginx
-(this can be skipped if you don't care to authenticate, i.e. in a lab environment)
+## Configure
+Edit /etc/kibana/kibana.yml
 ```
-sudo apt-get install -y nginx apache2-utils
-```
-
-#### Configure Nginx
-```
-sudo mkdir /etc/nginx/sites-avaiable
-sudo /etc/nginx/sites-avaiable/touch kibana
-sudo mousepad /etc/nginx/sites-available/kibana &
+server.host: "0"
 ```
 
-paste this:
+## Start at Boot
 ```
-server {
-    listen 80;
- 
-    server_name 192.168.16.129;
- 
-    auth_basic "Restricted Access";
-    auth_basic_user_file /etc/nginx/.kibana-user;
- 
-    location / {
-        proxy_pass http://192.168.16.129:5601;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
+/bin/systemctl daemon-reload
+/bin/systemctl enable kibana.service
 ```
 
-Create basic auth file and user
+## Manage Service
 ```
-sudo htpasswd -c /etc/nginx/.kibana-user admin
-TYPE YOUR PASSWORD
-```
-
-Activate the kibana virtual host
-```
-sudo ln -s /etc/nginx/sites-available/kibana /etc/nginx/sites-enabled/
+systemctl stop kibana.service
+systemctl start kibana.service
+systemctl restart kibana.service
 ```
 
-Test the nginx configuration and make sure there is no error
+# Logstash
+Condensed version of the below guides compiled using Xubuntu
+https://www.elastic.co/guide/en/logstash/7.1/installing-logstash.html
+https://www.elastic.co/guide/en/logstash/7.1/running-logstash.html
+
+## Install
 ```
-sudo nginx -t
+apt-get install default-jre
+update-alternatives --config java
+apt-get update && sudo apt-get install logstash
 ```
 
-#### Configure Nginx to run on startup and restart
+Determine java location
 ```
-sudo update-rc.d nginx defaults 95 10
-sudo -i service nginx restart
-```
-
-### Install Logstash
-```
-sudo apt-get install -y logstash
+update-java-alternatives --list
 ```
 
-#### Configure output
-Copy [threcon.conf](https://github.com/TonyPhipps/THRecon-Elasticstack/blob/master/Elasticstack6.3/threcon.conf) to /etc/logstash/conf.d/threcon.conf
-
-#### Configure Logstash to run on startup and restart
+Edit /etc/environment
 ```
-sudo update-rc.d logstash defaults 95 10
-sudo -i service logstash restart
+JAVA_HOME="/your/java/location"
 ```
-
-### Install Filebeat
 ```
-sudo apt-get install filebeat
+source /etc/environment
+echo $JAVA_HOME
 ```
 
-#### Configure filebeat
+## Configure
+
+Edit /etc/logstash/logstash.yml
 ```
-mousepad /etc/filebeat/filebeat.yml
+path.data: /var/lib/logstash
+path.logs: /var/log/logstash
+path.config: /etc/logstash
+config.reload.automatic: true
+config.reload.interval: 30s
+log.level: warn
 ```
 
-Comment out Elasticsearch Output section
+Copy Logstash/THRecon.yml to /etc/logstash/conf.d
 
-Add:
-
+## Start at Boot
 ```
-#===================== External Input Configs ==============================
-filebeat.config.inputs:
-  enabled: true
-  path: configs/*.yml
-  reload.enabled: true
-  reload.period: 10s
-  
-#========================= Logstash Outputs ================================
+/bin/systemctl daemon-reload
+/bin/systemctl enable logstash.service
+```
+
+## Manage Service
+```
+systemctl stop logstash.service
+systemctl start logstash.service
+systemctl restart logstash.service
+```
+
+## Monitor
+```
+/usr/share/logstash/bin/logstash --path.settings /etc/logstash --log.level=debug
+```
+
+# Filebeat
+Condensed version of the below guides compiled using Xubuntu
+https://www.elastic.co/guide/en/beats/filebeat/master/filebeat-installation.html
+
+## Install
+
+- Download and install Filebeat to a windows box according to the guide
+
+## Configure
+
+- Paste the contents of Filebeat/threcon.yml into filebeat.yml, immediately after this line:
+```
+filebeat.inputs:
+```
+
+Edit filebeat.yml
+```
+#output.elasticsearch:
+  # Array of hosts to connect to.
+#  hosts: ["localhost:9200"]
+
 output.logstash:
-  hosts: ["localhost:31337"]
+  # The Logstash hosts
+  hosts: ["172.30.211.88:9600"]
 ```
 
-Copy [threcon.yml](https://github.com/TonyPhipps/THRecon-Elasticstack/blob/master/Elasticstack6.3/threcon.yml) to /etc/logstash/configs/threcon.yml
+## Start at Boot
 
-### Configure Filebeat to run on startup and restart
-```
-sudo update-rc.d filebeat defaults 95 10
-sudo -i service filebeat restart
-```
+Ensure the "filebeat" service was created via services.msc
 
-#### Configuring filebeat with a VM Shared Folder
-Create a symlink:
-```
-ln -s /mnt/hgfs/vm-share /var/log/threcon
-```
-Add this to filebeat.yml in the filebeat.inputs: section
-```
-  symlinks: true
-```
+## Monitor
+
+Either:
+- Review the logs at c:\programdata\filebeat\logs
+- run ```..\filebeat.exe -e -v``` and review output to console
 
 ### [Administration and Other Operational Notes](https://github.com/TonyPhipps/THRecon-Elasticstack/blob/master/Administration.md)
 
