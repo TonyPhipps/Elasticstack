@@ -1,5 +1,3 @@
-## Ingest [THRecon](https://github.com/TonyPhipps/THRecon) into [Elasticstack](https://github.com/elastic)!
-
 - [Elasticsearch](#elasticsearch)
   - [Install](#install)
   - [Configure](#configure)
@@ -22,6 +20,9 @@
   - [Configure](#configure-3)
   - [Start at Boot](#start-at-boot-3)
   - [Monitor](#monitor-1)
+- [Ingest THRecon Output](#ingest-threcon-output)
+- [Administration Tips & Tricks](#administration-tips--tricks)
+- [Enable HTTPS](#enable-https)
 
 This guide was written primarily with [Xubuntu](https://xubuntu.org/about/) 18.04.1 in mind, but can easily be adjusted to any other distribution.
 
@@ -136,8 +137,6 @@ config.reload.interval: 30s
 log.level: warn
 ```
 
-Copy Logstash/THRecon.yml to /etc/logstash/conf.d
-
 ## Start at Boot
 ```
 /bin/systemctl daemon-reload
@@ -167,12 +166,12 @@ https://www.elastic.co/guide/en/beats/filebeat/master/filebeat-installation.html
 
 ## Configure
 
-- Paste the contents of Filebeat/threcon.yml into filebeat.yml, immediately after this line:
+- Edit filebeat.yml and place input config immediately after this line:
 ```
 filebeat.inputs:
 ```
 
-Edit filebeat.yml
+Edit filebeat.yml, comment out Elasticsearch section and uncomment Logstash section.
 ```
 #output.elasticsearch:
   # Array of hosts to connect to.
@@ -193,9 +192,6 @@ Either:
 - Review the logs at c:\programdata\filebeat\logs
 - run ```..\filebeat.exe -e -v``` and review output to console
 
-### [Administration and Other Operational Notes](https://github.com/TonyPhipps/THRecon-Elasticstack/blob/master/Administration.md)
-
-### Sources
-* https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html
-* https://www.howtoforge.com/tutorial/ubuntu-elastic-stack/
-
+# [Ingest THRecon Output](THRecon.md)
+# [Administration Tips & Tricks](https://github.com/TonyPhipps/THRecon-Elasticstack/blob/master/Administration.md)
+# [Enable HTTPS](HTTPS.md)
