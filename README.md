@@ -1,3 +1,5 @@
+## Ingest [THRecon](https://github.com/TonyPhipps/THRecon) into [Elasticstack](https://github.com/elastic)!
+
 - [Elasticsearch](#elasticsearch)
   - [Install](#install)
   - [Configure](#configure)
@@ -21,13 +23,12 @@
   - [Start at Boot](#start-at-boot-3)
   - [Monitor](#monitor-1)
 
-## Ingest [THRecon](https://github.com/TonyPhipps/THRecon) into [Elasticstack](https://github.com/elastic)!
-
 This guide was written primarily with [Xubuntu](https://xubuntu.org/about/) 18.04.1 in mind, but can easily be adjusted to any other distribution.
 
 
 # Elasticsearch
 Condensed version of the below guide compiled using Xubuntu
+
 https://www.elastic.co/guide/en/elasticsearch/reference/7.1/deb.html#deb-repo
 
 ## Install
@@ -68,6 +69,7 @@ curl -X GET http://127.0.0.1:9200
 
 # Kibana
 Condensed version of the below guide compiled using Xubuntu
+
 https://www.elastic.co/guide/en/kibana/7.1/install.html
 
 ## Install
@@ -96,7 +98,9 @@ systemctl restart kibana.service
 
 # Logstash
 Condensed version of the below guides compiled using Xubuntu
+
 https://www.elastic.co/guide/en/logstash/7.1/installing-logstash.html
+
 https://www.elastic.co/guide/en/logstash/7.1/running-logstash.html
 
 ## Install
@@ -154,6 +158,7 @@ systemctl restart logstash.service
 
 # Filebeat
 Condensed version of the below guides compiled using Xubuntu
+
 https://www.elastic.co/guide/en/beats/filebeat/master/filebeat-installation.html
 
 ## Install
