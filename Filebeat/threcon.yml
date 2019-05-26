@@ -1,298 +1,298 @@
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*ADS*.csv
-    - /var/log/threcon/*ads*.csv
+    - c:/threcon/*ADS*.csv
+    - c:/threcon/*ads*.csv
   tags: ["threcon","ads"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*ARP*.csv
-    - /var/log/threcon/*arp*.csv
+    - c:/threcon/*ARP*.csv
+    - c:/threcon/*arp*.csv
   tags: ["threcon","arp"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-  - /var/log/threcon/*Autoruns*.csv
-  - /var/log/threcon/*autoruns*.csv
+  - c:/threcon/*Autoruns*.csv
+  - c:/threcon/*autoruns*.csv
   tags: ["threcon","autoruns"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
 
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*BitLocker*.csv
-    - /var/log/threcon/*bitlocker*.csv
+    - c:/threcon/*BitLocker*.csv
+    - c:/threcon/*bitlocker*.csv
   tags: ["threcon","bitlocker"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
 
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*Certificates*.csv
-    - /var/log/threcon/*certificates*.csv
+    - c:/threcon/*Certificates*.csv
+    - c:/threcon/*certificates*.csv
   tags: ["threcon","certificates"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*Computer*.csv
-    - /var/log/threcon/*computer*.csv
+    - c:/threcon/*Computer*.csv
+    - c:/threcon/*computer*.csv
   tags: ["threcon","computer"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*DLLs*.csv
-    - /var/log/threcon/*dlls*.csv
+    - c:/threcon/*DLLs*.csv
+    - c:/threcon/*dlls*.csv
   tags: ["threcon","dlls"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*DNS*.csv
-    - /var/log/threcon/*dns*.csv
+    - c:/threcon/*DNS*.csv
+    - c:/threcon/*dns*.csv
   tags: ["threcon","dns"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*Drivers*.csv
-    - /var/log/threcon/*drivers*.csv
+    - c:/threcon/*Drivers*.csv
+    - c:/threcon/*drivers*.csv
   tags: ["threcon","drivers"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*EnvVars*.csv
-    - /var/log/threcon/*envvars*.csv
+    - c:/threcon/*EnvVars*.csv
+    - c:/threcon/*envvars*.csv
   tags: ["threcon","envvars"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*EventLogs*.csv
-    - /var/log/threcon/*eventlogs*.csv
+    - c:/threcon/*EventLogs*.csv
+    - c:/threcon/*eventlogs*.csv
   tags: ["threcon","eventlogs"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-  - /var/log/threcon/*GroupMembers*.csv
-  - /var/log/threcon/*groupmembers*.csv
+  - c:/threcon/*GroupMembers*.csv
+  - c:/threcon/*groupmembers*.csv
   tags: ["threcon","groupmembers"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
 
 - type: log
   symlinks: true
   paths: 
-  - /var/log/threcon/*Hardware*.csv
-  - /var/log/threcon/*hardware*.csv
+  - c:/threcon/*Hardware*.csv
+  - c:/threcon/*hardware*.csv
   tags: ["threcon","hardware"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*Hosts*.csv
-    - /var/log/threcon/*hosts*.csv
+    - c:/threcon/*Hosts*.csv
+    - c:/threcon/*hosts*.csv
   tags: ["threcon","hosts"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*Hotfixes*.csv
-    - /var/log/threcon/*hotfixes*.csv
+    - c:/threcon/*Hotfixes*.csv
+    - c:/threcon/*hotfixes*.csv
   tags: ["threcon","hotfixes"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*MAC*.csv
-    - /var/log/threcon/*mac*.csv
+    - c:/threcon/*MAC*.csv
+    - c:/threcon/*mac*.csv
   tags: ["threcon","mac"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*MRU*.csv
-    - /var/log/threcon/*mru*.csv
+    - c:/threcon/*MRU*.csv
+    - c:/threcon/*mru*.csv
   tags: ["threcon","mru"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*NetAdapters*.csv
-    - /var/log/threcon/*netadapters*.csv
+    - c:/threcon/*NetAdapters*.csv
+    - c:/threcon/*netadapters*.csv
   tags: ["threcon","netadapters"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*NetRoute*.csv
-    - /var/log/threcon/*netroute*.csv
+    - c:/threcon/*NetRoute*.csv
+    - c:/threcon/*netroute*.csv
   tags: ["threcon","netroute"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*Processes*.csv
-    - /var/log/threcon/*processes*.csv
+    - c:/threcon/*Processes*.csv
+    - c:/threcon/*processes*.csv
   tags: ["threcon","processes"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*RecycleBin*.csv
-    - /var/log/threcon/*recyclebin*.csv
+    - c:/threcon/*RecycleBin*.csv
+    - c:/threcon/*recyclebin*.csv
   tags: ["threcon","recyclebin"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*Registry*.csv
-    - /var/log/threcon/*registry*.csv
+    - c:/threcon/*Registry*.csv
+    - c:/threcon/*registry*.csv
   tags: ["threcon","registry"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*ScheduledTasks*.csv
-    - /var/log/threcon/*scheduledtasks*.csv
+    - c:/threcon/*ScheduledTasks*.csv
+    - c:/threcon/*scheduledtasks*.csv
   tags: ["threcon","scheduledtasks"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*Services*.csv
-    - /var/log/threcon/*services*.csv
+    - c:/threcon/*Services*.csv
+    - c:/threcon/*services*.csv
   tags: ["threcon","services"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*Sessions*.csv
-    - /var/log/threcon/*sessions*.csv
+    - c:/threcon/*Sessions*.csv
+    - c:/threcon/*sessions*.csv
   tags: ["threcon","sessions"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*Shares*.csv
-    - /var/log/threcon/*shares*.csv
+    - c:/threcon/*Shares*.csv
+    - c:/threcon/*shares*.csv
   tags: ["threcon","shares"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*Software*.csv
-    - /var/log/threcon/*software*.csv
+    - c:/threcon/*Software*.csv
+    - c:/threcon/*software*.csv
   tags: ["threcon","software"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*Strings*.csv
-    - /var/log/threcon/*strings*.csv
+    - c:/threcon/*Strings*.csv
+    - c:/threcon/*strings*.csv
   tags: ["threcon","strings"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*TCPConnections*.csv
-    - /var/log/threcon/*tcpconnections*.csv
+    - c:/threcon/*TCPConnections*.csv
+    - c:/threcon/*tcpconnections*.csv
   tags: ["threcon","tcpconnections"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]
   
   
 - type: log
   symlinks: true
   paths: 
-    - /var/log/threcon/*TPM*.csv
-    - /var/log/threcon/*tpm*.csv
+    - c:/threcon/*TPM*.csv
+    - c:/threcon/*tpm*.csv
   tags: ["threcon","tpm"]
   # Ignore the first line with column headings
-  exclude_lines: ["^.Computer","^#"]
+  exclude_lines: ["^.Host"]

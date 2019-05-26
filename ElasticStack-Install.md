@@ -75,16 +75,37 @@ https://www.elastic.co/guide/en/logstash/7.1/running-logstash.html
 ## Install
 ```
 apt-get install default-jre
+update-alternatives --config java
 apt-get update && sudo apt-get install logstash
+```
+
+Determine java location
+```
+update-java-alternatives --list
+```
+
+Edit /etc/environment
+```
+JAVA_HOME="/your/java/location"
+```
+```
+source /etc/environment
+echo $JAVA_HOME
 ```
 
 ## Configure
 
 Edit /etc/logstash/logstash.yml
 ```
-- pipeline.id: main
-path.config: "/etc/logstash/conf.d/*.conf"
+path.data: /var/lib/logstash
+path.logs: /var/log/logstash
+path.config: /etc/logstash
+config.reload.automatic: true
+config.reload.interval: 30s
+log.level: warn
 ```
+
+Copy Logstash/THRecon.yml to /etc/logstash/conf.d
 
 ## Start at Boot
 ```
@@ -101,5 +122,42 @@ systemctl restart logstash.service
 
 ## Monitor
 ```
-/usr/share/logstash/bin/logstash -f /etc/logstash/logstash.yml -e
+/usr/share/logstash/bin/logstash --path.settings /etc/logstash --log.level=debug
 ```
+
+# Filebeat
+Condensed version of the below guides compiled using Xubuntu
+https://www.elastic.co/guide/en/beats/filebeat/master/filebeat-installation.html
+
+## Install
+
+- Download and install Filebeat to a windows box according to the guide
+
+## Configure
+
+- Paste the contents of Filebeat/threcon.yml into filebeat.yml, immediately after this line:
+```
+filebeat.inputs:
+```
+
+Edit filebeat.yml
+```
+#output.elasticsearch:
+  # Array of hosts to connect to.
+#  hosts: ["localhost:9200"]
+
+output.logstash:
+  # The Logstash hosts
+  hosts: ["172.30.211.88:9600"]
+```
+
+## Start at Boot
+
+Ensure the "filebeat" service was created via services.msc
+
+## Monitor
+
+Either:
+- Review the logs at c:\programdata\filebeat\logs
+- run ```..\filebeat.exe -e -v``` and review output to console
+
