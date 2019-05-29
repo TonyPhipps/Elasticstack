@@ -1,0 +1,72 @@
+{
+       "message" => "Id = {8A4A21EE-1269-0004-F845-578A6912D501}; ClientMachine = DESKTOP-08TEMKV; User = NT AUTHORITY\\SYSTEM; ClientProcessId = 24416; Component = Unknown; Operation = Start IWbemServices::ExecNotificationQuery - ROOT\\CIMV2 : SELECT * FROM Win32_ProcessStartTrace WHERE ProcessName = 'wsmprovhost.exe'; ResultCode = 0x80041032; PossibleCause = Unknown",
+        "winlog" => {
+            "user_data" => {
+                   "xml_name" => "Operation_ClientFailure",
+              "ClientMachine" => "DESKTOP-08TEMKV",
+                  "Operation" => "Start IWbemServices::ExecNotificationQuery - ROOT\\CIMV2 : SELECT * FROM Win32_ProcessStartTrace WHERE ProcessName = 'wsmprovhost.exe'",
+                       "User" => "NT AUTHORITY\\SYSTEM",
+                 "ResultCode" => "0x80041032",
+                         "Id" => "{8A4A21EE-1269-0004-F845-578A6912D501}",
+                  "Component" => "Unknown",
+              "PossibleCause" => "Unknown",
+            "ClientProcessId" => "24416"
+        },
+        "provider_name" => "Microsoft-Windows-WMI-Activity",
+        "computer_name" => "DESKTOP-08TEMKV",
+        "provider_guid" => "{1418EF04-B0B4-4623-BF7E-D74AB47BBDAA}",
+          "activity_id" => "{8A4A21EE-1269-0004-F845-578A6912D501}",
+              "channel" => "Microsoft-Windows-WMI-Activity/Operational",
+             "event_id" => 5858,
+            "record_id" => 23634,
+               "opcode" => "Info",
+              "process" => {
+               "pid" => 4092,
+            "thread" => {
+                "id" => 12092
+            }
+        },
+                 "user" => {
+                  "name" => "SYSTEM",
+                  "type" => "User",
+                "domain" => "NT AUTHORITY",
+            "identifier" => "S-1-5-18"
+        },
+                  "api" => "wineventlog",
+                 "task" => ""
+    },
+          "host" => {
+                  "os" => {
+             "version" => "10.0",
+                "name" => "Windows 10 Enterprise",
+               "build" => "17134.765",
+            "platform" => "windows",
+              "kernel" => "10.0.17134.765 (WinBuild.160101.0800)",
+              "family" => "windows"
+        },
+                "name" => "DESKTOP-08TEMKV",
+            "hostname" => "DESKTOP-08TEMKV",
+                  "id" => "b1a07600-db94-4a6e-8638-b7c83b4ee849",
+        "architecture" => "x86_64"
+    },
+         "agent" => {
+             "version" => "7.0.0",
+                "type" => "winlogbeat",
+            "hostname" => "DESKTOP-08TEMKV",
+                  "id" => "c1cc54cb-8226-486f-8e73-18bd07e257e5",
+        "ephemeral_id" => "b5ec4f03-941e-46f6-8f4b-07ff32e17f2f"
+    },
+           "ecs" => {
+        "version" => "1.0.0"
+    },
+         "event" => {
+        "created" => "2019-05-29T01:40:26.632Z",
+           "kind" => "event",
+           "code" => 5858
+    },
+      "@version" => "1",
+           "log" => {
+        "level" => "error"
+    },
+    "@timestamp" => 2019-05-29T01:40:25.181Z
+}

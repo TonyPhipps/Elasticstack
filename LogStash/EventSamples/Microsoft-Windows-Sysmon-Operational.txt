@@ -1,0 +1,84 @@
+{
+       "message" => "Process Create:\nRuleName: \nUtcTime: 2019-05-29 00:16:04.067\nProcessGuid: {B1A07600-CF44-5CED-0000-00100D818F2B}\nProcessId: 28676\nImage: C:\\Program Files\\Mozilla Firefox\\firefox.exe\nFileVersion: 67.0\nDescription: Firefox\nProduct: Firefox\nCompany: Mozilla Corporation\nCommandLine: \"C:\\Program Files\\Mozilla Firefox\\firefox.exe\" -contentproc --channel=\"11780.1331.1225718746\\1560240105\" -childID 189 -isForBrowser -prefsHandle 6872 -prefMapHandle 2888 -prefsLen 10337 -prefMapSize 202905 -parentBuildID 20190516215225 -greomni \"C:\\Program Files\\Mozilla Firefox\\omni.ja\" -appomni \"C:\\Program Files\\Mozilla Firefox\\browser\\omni.ja\" -appdir \"C:\\Program Files\\Mozilla Firefox\\browser\" - 11780 \"\\\\.\\pipe\\gecko-crash-server-pipe.11780\" 11312 tab\nCurrentDirectory: C:\\Program Files\\Mozilla Firefox\\\nUser: DESKTOP-08TEMKV\\Cooler\nLogonGuid: {B1A07600-4A66-5CE8-0000-0020A4140200}\nLogonId: 0x214A4\nTerminalSessionId: 1\nIntegrityLevel: Low\nHashes: MD5=9B2DF28322B7D9E784B54D10A34DF3E6,SHA256=0D2BC11941E7952D59BF4BC919621C0F87BB73E0BDAF4EF2E57E98AEB3EC6EB7\nParentProcessGuid: {B1A07600-5EA9-5CE8-0000-001028EA7100}\nParentProcessId: 11780\nParentImage: C:\\Program Files\\Mozilla Firefox\\firefox.exe\nParentCommandLine: \"C:\\Program Files\\Mozilla Firefox\\firefox.exe\" ",
+          "host" => {
+            "hostname" => "DESKTOP-08TEMKV",
+                "name" => "DESKTOP-08TEMKV",
+        "architecture" => "x86_64",
+                  "id" => "b1a07600-db94-4a6e-8638-b7c83b4ee849",
+                  "os" => {
+             "version" => "10.0",
+                "name" => "Windows 10 Enterprise",
+               "build" => "17134.765",
+            "platform" => "windows",
+              "family" => "windows",
+              "kernel" => "10.0.17134.765 (WinBuild.160101.0800)"
+        }
+    },
+         "agent" => {
+            "hostname" => "DESKTOP-08TEMKV",
+             "version" => "7.0.0",
+                  "id" => "c1cc54cb-8226-486f-8e73-18bd07e257e5",
+                "type" => "winlogbeat",
+        "ephemeral_id" => "b5ec4f03-941e-46f6-8f4b-07ff32e17f2f"
+    },
+           "ecs" => {
+        "version" => "1.0.0"
+    },
+      "@version" => "1",
+    "@timestamp" => 2019-05-29T00:16:04.084Z,
+        "winlog" => {
+              "version" => 5,
+                 "task" => "Process Create (rule: ProcessCreate)",
+           "event_data" => {
+                  "Description" => "Firefox",
+              "ParentProcessId" => "11780",
+                  "ParentImage" => "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+                      "LogonId" => "0x214a4",
+                    "ProcessId" => "28676",
+                  "CommandLine" => "\"C:\\Program Files\\Mozilla Firefox\\firefox.exe\" -contentproc --channel=\"11780.1331.1225718746\\1560240105\" -childID 189 -isForBrowser -prefsHandle 6872 -prefMapHandle 2888 -prefsLen 10337 -prefMapSize 202905 -parentBuildID 20190516215225 -greomni \"C:\\Program Files\\Mozilla Firefox\\omni.ja\" -appomni \"C:\\Program Files\\Mozilla Firefox\\browser\\omni.ja\" -appdir \"C:\\Program Files\\Mozilla Firefox\\browser\" - 11780 \"\\\\.\\pipe\\gecko-crash-server-pipe.11780\" 11312 tab",
+                       "Hashes" => "MD5=9B2DF28322B7D9E784B54D10A34DF3E6,SHA256=0D2BC11941E7952D59BF4BC919621C0F87BB73E0BDAF4EF2E57E98AEB3EC6EB7",
+                      "Company" => "Mozilla Corporation",
+                         "User" => "DESKTOP-08TEMKV\\Cooler",
+               "IntegrityLevel" => "Low",
+                        "Image" => "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+             "CurrentDirectory" => "C:\\Program Files\\Mozilla Firefox\\",
+            "TerminalSessionId" => "1",
+                      "UtcTime" => "2019-05-29 00:16:04.067",
+                    "LogonGuid" => "{B1A07600-4A66-5CE8-0000-0020A4140200}",
+            "ParentProcessGuid" => "{B1A07600-5EA9-5CE8-0000-001028EA7100}",
+                  "FileVersion" => "67.0",
+                  "ProcessGuid" => "{B1A07600-CF44-5CED-0000-00100D818F2B}",
+                      "Product" => "Firefox",
+            "ParentCommandLine" => "\"C:\\Program Files\\Mozilla Firefox\\firefox.exe\" "
+        },
+            "record_id" => 56796,
+        "provider_name" => "Microsoft-Windows-Sysmon",
+               "opcode" => "Info",
+              "process" => {
+               "pid" => 5988,
+            "thread" => {
+                "id" => 7024
+            }
+        },
+                 "user" => {
+                  "name" => "SYSTEM",
+                "domain" => "NT AUTHORITY",
+            "identifier" => "S-1-5-18",
+                  "type" => "User"
+        },
+        "computer_name" => "DESKTOP-08TEMKV",
+             "event_id" => 1,
+                  "api" => "wineventlog",
+              "channel" => "Microsoft-Windows-Sysmon/Operational",
+        "provider_guid" => "{5770385F-C22A-43E0-BF4C-06F5698FFBD9}"
+    },
+           "log" => {
+        "level" => "information"
+    },
+         "event" => {
+        "created" => "2019-05-29T00:16:05.234Z",
+           "code" => 1,
+         "action" => "Process Create (rule: ProcessCreate)",
+           "kind" => "event"
+    }
+}

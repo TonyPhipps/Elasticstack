@@ -1,0 +1,72 @@
+{
+       "message" => "Installation Successful: Windows successfully installed the following update: 9WZDNCRFHVN5-MICROSOFT.WINDOWSCALCULATOR",
+           "ecs" => {
+        "version" => "1.0.0"
+    },
+          "host" => {
+                  "os" => {
+             "version" => "10.0",
+                "name" => "Windows 10 Enterprise",
+               "build" => "17134.765",
+            "platform" => "windows",
+              "family" => "windows",
+              "kernel" => "10.0.17134.765 (WinBuild.160101.0800)"
+        },
+                "name" => "DESKTOP-08TEMKV",
+                  "id" => "b1a07600-db94-4a6e-8638-b7c83b4ee849",
+        "architecture" => "x86_64",
+            "hostname" => "DESKTOP-08TEMKV"
+    },
+         "agent" => {
+            "hostname" => "DESKTOP-08TEMKV",
+             "version" => "7.0.0",
+                  "id" => "c1cc54cb-8226-486f-8e73-18bd07e257e5",
+                "type" => "winlogbeat",
+        "ephemeral_id" => "b5ec4f03-941e-46f6-8f4b-07ff32e17f2f"
+    },
+      "@version" => "1",
+    "@timestamp" => 2019-05-28T22:57:13.046Z,
+        "winlog" => {
+              "version" => 1,
+                 "task" => "Windows Update Agent",
+           "event_data" => {
+                     "serviceGuid" => "{855E8A7C-ECB4-4CA3-B045-1DFA50104289}",
+                      "updateGuid" => "{0B1B89E4-8F48-4AE5-8DDD-4E6D00353F15}",
+                     "updateTitle" => "9WZDNCRFHVN5-MICROSOFT.WINDOWSCALCULATOR",
+            "updateRevisionNumber" => "1"
+        },
+        "provider_name" => "Microsoft-Windows-WindowsUpdateClient",
+            "record_id" => 167594,
+             "keywords" => [
+            [0] "Installation",
+            [1] "Success"
+        ],
+               "opcode" => "Installation",
+                 "user" => {
+                "domain" => "NT AUTHORITY",
+                  "name" => "SYSTEM",
+            "identifier" => "S-1-5-18",
+                  "type" => "User"
+        },
+              "process" => {
+               "pid" => 5140,
+            "thread" => {
+                "id" => 25620
+            }
+        },
+        "computer_name" => "DESKTOP-08TEMKV",
+             "event_id" => 19,
+                  "api" => "wineventlog",
+              "channel" => "System",
+        "provider_guid" => "{945A8954-C147-4ACD-923F-40C45405A658}"
+    },
+           "log" => {
+        "level" => "information"
+    },
+         "event" => {
+           "code" => 19,
+        "created" => "2019-05-28T22:57:14.729Z",
+         "action" => "Windows Update Agent",
+           "kind" => "event"
+    }
+}

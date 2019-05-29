@@ -1,0 +1,58 @@
+{
+       "message" => "svchost (6020,G,98) The beta feature EseDiskFlushConsistency is enabled in ESENT due to the beta site mode settings 0x800000.",
+           "ecs" => {
+        "version" => "1.0.0"
+    },
+          "host" => {
+                  "os" => {
+             "version" => "10.0",
+                "name" => "Windows 10 Enterprise",
+               "build" => "17134.765",
+            "platform" => "windows",
+              "family" => "windows",
+              "kernel" => "10.0.17134.765 (WinBuild.160101.0800)"
+        },
+                "name" => "DESKTOP-08TEMKV",
+        "architecture" => "x86_64",
+                  "id" => "b1a07600-db94-4a6e-8638-b7c83b4ee849",
+            "hostname" => "DESKTOP-08TEMKV"
+    },
+         "agent" => {
+            "hostname" => "DESKTOP-08TEMKV",
+             "version" => "7.0.0",
+                  "id" => "c1cc54cb-8226-486f-8e73-18bd07e257e5",
+                "type" => "winlogbeat",
+        "ephemeral_id" => "b5ec4f03-941e-46f6-8f4b-07ff32e17f2f"
+    },
+      "@version" => "1",
+    "@timestamp" => 2019-05-29T01:26:00.003Z,
+        "winlog" => {
+                 "task" => "General",
+             "event_id" => 916,
+           "event_data" => {
+            "param5" => "ESENT",
+            "param4" => "EseDiskFlushConsistency",
+            "param6" => "0x800000",
+            "param1" => "svchost",
+            "param2" => "6020,G,98"
+        },
+        "provider_name" => "ESENT",
+            "record_id" => 55561,
+              "channel" => "Application",
+               "opcode" => "Info",
+                  "api" => "wineventlog",
+             "keywords" => [
+            [0] "Classic"
+        ],
+        "computer_name" => "DESKTOP-08TEMKV"
+    },
+           "log" => {
+        "level" => "information"
+    },
+         "event" => {
+           "code" => 916,
+        "created" => "2019-05-29T01:26:00.373Z",
+         "action" => "General",
+           "kind" => "event"
+    }
+}

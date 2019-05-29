@@ -1,0 +1,70 @@
+{
+       "message" => "A user's local group membership was enumerated.\n\nSubject:\n\tSecurity ID:\t\tS-1-5-21-3201126533-4233093971-1484186300-1001\n\tAccount Name:\t\tCooler\n\tAccount Domain:\t\tDESKTOP-08TEMKV\n\tLogon ID:\t\t0x214A4\n\nUser:\n\tSecurity ID:\t\tS-1-5-21-3201126533-4233093971-1484186300-1001\n\tAccount Name:\t\tCooler\n\tAccount Domain:\t\tDESKTOP-08TEMKV\n\nProcess Information:\n\tProcess ID:\t\t0x13d0\n\tProcess Name:\t\tC:\\Windows\\explorer.exe",
+         "agent" => {
+             "version" => "7.0.0",
+            "hostname" => "DESKTOP-08TEMKV",
+                  "id" => "c1cc54cb-8226-486f-8e73-18bd07e257e5",
+                "type" => "winlogbeat",
+        "ephemeral_id" => "b5ec4f03-941e-46f6-8f4b-07ff32e17f2f"
+    },
+           "ecs" => {
+        "version" => "1.0.0"
+    },
+          "host" => {
+                  "os" => {
+             "version" => "10.0",
+                "name" => "Windows 10 Enterprise",
+               "build" => "17134.765",
+            "platform" => "windows",
+              "family" => "windows",
+              "kernel" => "10.0.17134.765 (WinBuild.160101.0800)"
+        },
+                "name" => "DESKTOP-08TEMKV",
+        "architecture" => "x86_64",
+                  "id" => "b1a07600-db94-4a6e-8638-b7c83b4ee849",
+            "hostname" => "DESKTOP-08TEMKV"
+    },
+      "@version" => "1",
+    "@timestamp" => 2019-05-28T22:57:18.035Z,
+        "winlog" => {
+                 "task" => "User Account Management",
+           "event_data" => {
+             "TargetDomainName" => "DESKTOP-08TEMKV",
+               "SubjectLogonId" => "0x214a4",
+            "SubjectDomainName" => "DESKTOP-08TEMKV",
+                    "TargetSid" => "S-1-5-21-3201126533-4233093971-1484186300-1001",
+              "SubjectUserName" => "Cooler",
+              "CallerProcessId" => "0x13d0",
+               "SubjectUserSid" => "S-1-5-21-3201126533-4233093971-1484186300-1001",
+               "TargetUserName" => "Cooler",
+            "CallerProcessName" => "C:\\Windows\\explorer.exe"
+        },
+            "record_id" => 106840,
+             "keywords" => [
+            [0] "Audit Success"
+        ],
+        "provider_name" => "Microsoft-Windows-Security-Auditing",
+               "opcode" => "Info",
+              "process" => {
+               "pid" => 1124,
+            "thread" => {
+                "id" => 9308
+            }
+        },
+        "computer_name" => "DESKTOP-08TEMKV",
+          "activity_id" => "{8A4A21EE-1269-000B-2422-4A8A6912D501}",
+             "event_id" => 4798,
+                  "api" => "wineventlog",
+              "channel" => "Security",
+        "provider_guid" => "{54849625-5478-4994-A5BA-3E3B0328C30D}"
+    },
+           "log" => {
+        "level" => "information"
+    },
+         "event" => {
+           "code" => 4798,
+        "created" => "2019-05-28T22:57:19.406Z",
+         "action" => "User Account Management",
+           "kind" => "event"
+    }
+}

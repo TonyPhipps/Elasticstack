@@ -1,0 +1,67 @@
+{
+       "message" => "CommandInvocation(Get-Process): \"Get-Process\"\n\n\nContext:\n        Severity = Informational\n        Host Name = Windows PowerShell ISE Host\n        Host Version = 5.1.17134.765\n        Host ID = f9056055-be9b-45b1-b532-d3b4574ebc54\n        Host Application = C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\PowerShell_ISE.exe\n        Engine Version = 5.1.17134.765\n        Runspace ID = 22924de0-e803-40ac-98fe-b9260cf2a37a\n        Pipeline ID = 14\n        Command Name = Get-Process\n        Command Type = Cmdlet\n        Script Name = \n        Command Path = \n        Sequence Number = 34\n        User = DESKTOP-08TEMKV\\Cooler\n        Connected User = \n        Shell ID = Microsoft.PowerShell\n\n\nUser Data:",
+        "winlog" => {
+              "version" => 1,
+        "provider_name" => "Microsoft-Windows-PowerShell",
+        "computer_name" => "DESKTOP-08TEMKV",
+        "provider_guid" => "{A0C1853B-5C40-4B15-8766-3CF1C58F985A}",
+              "channel" => "Microsoft-windows-PowerShell/Operational",
+          "activity_id" => "{8A4A21EE-1269-0008-4D5F-4F8A6912D501}",
+           "event_data" => {
+            "ContextInfo" => "        Severity = Informational\n        Host Name = Windows PowerShell ISE Host\n        Host Version = 5.1.17134.765\n        Host ID = f9056055-be9b-45b1-b532-d3b4574ebc54\n        Host Application = C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\PowerShell_ISE.exe\n        Engine Version = 5.1.17134.765\n        Runspace ID = 22924de0-e803-40ac-98fe-b9260cf2a37a\n        Pipeline ID = 14\n        Command Name = Get-Process\n        Command Type = Cmdlet\n        Script Name = \n        Command Path = \n        Sequence Number = 34\n        User = DESKTOP-08TEMKV\\Cooler\n        Connected User = \n        Shell ID = Microsoft.PowerShell",
+                "Payload" => "CommandInvocation(Get-Process): \"Get-Process\""
+        },
+            "record_id" => 37410262,
+             "event_id" => 4103,
+               "opcode" => "To be used when operation is just executing a method",
+              "process" => {
+               "pid" => 28700,
+            "thread" => {
+                "id" => 14432
+            }
+        },
+                 "user" => {
+                  "name" => "Cooler",
+                  "type" => "User",
+                "domain" => "DESKTOP-08TEMKV",
+            "identifier" => "S-1-5-21-3201126533-4233093971-1484186300-1001"
+        },
+                  "api" => "wineventlog",
+                 "task" => "Executing Pipeline"
+    },
+          "host" => {
+                  "os" => {
+             "version" => "10.0",
+                "name" => "Windows 10 Enterprise",
+               "build" => "17134.765",
+            "platform" => "windows",
+              "kernel" => "10.0.17134.765 (WinBuild.160101.0800)",
+              "family" => "windows"
+        },
+                "name" => "DESKTOP-08TEMKV",
+            "hostname" => "DESKTOP-08TEMKV",
+                  "id" => "b1a07600-db94-4a6e-8638-b7c83b4ee849",
+        "architecture" => "x86_64"
+    },
+         "agent" => {
+             "version" => "7.0.0",
+            "hostname" => "DESKTOP-08TEMKV",
+                  "id" => "c1cc54cb-8226-486f-8e73-18bd07e257e5",
+                "type" => "winlogbeat",
+        "ephemeral_id" => "b5ec4f03-941e-46f6-8f4b-07ff32e17f2f"
+    },
+           "ecs" => {
+        "version" => "1.0.0"
+    },
+         "event" => {
+        "created" => "2019-05-29T02:21:52.602Z",
+         "action" => "Executing Pipeline",
+           "kind" => "event",
+           "code" => 4103
+    },
+      "@version" => "1",
+           "log" => {
+        "level" => "information"
+    },
+    "@timestamp" => 2019-05-29T02:21:51.730Z
+}
