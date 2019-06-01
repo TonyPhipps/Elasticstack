@@ -137,6 +137,14 @@ config.reload.interval: 30s
 log.level: warn
 ```
 
+Ensure permissions on logstash folders and files are allowing the logstash account access
+```
+chown logstash:logstash /etc/logstash -R
+chown logstash:logstash /var/log/logstash -R
+chown logstash:logstash /var/lib/logstash -R
+chown logstash:logstash /etc/default/logstash
+```
+
 ## Start at Boot
 ```
 /bin/systemctl daemon-reload
