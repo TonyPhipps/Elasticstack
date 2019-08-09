@@ -201,5 +201,5 @@ Either:
 - run ```..\filebeat.exe -e -v``` and review output to console
 
 # [Ingest Meerkat Output](Meerkat.md)
-# [Administration Tips & Tricks](https://github.com/TonyPhipps/meerkat-Elasticstack/blob/master/Administration.md)
+# [Administration Tips & Tricks](https://github.com/TonyPhipps/Elasticstack/blob/master/Administration.md)
 # [Enable HTTPS](HTTPS.md)
