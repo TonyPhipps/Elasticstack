@@ -6,29 +6,29 @@ arp -a
 
 Create a new folder and mount it to the NTFS share
 ```
-mkdir /mnt/THRecon
-mount -t cifs //192.168.1.120/Linux -o username=myntaccount,password='mypassword' /mnt/THRecon
-ls -l /mnt/THRecon
+mkdir /mnt/meerkat
+mount -t cifs //192.168.1.120/Linux -o username=myntaccount,password='mypassword' /mnt/meerkat
+ls -l /mnt/meerkat
 ```
 
 Create a credential file to hold the Windows username and password
 ```
-touch /root/.THRecon
-chmod 600 /root/.THRecon
-ls -l .THRecon
+touch /root/.meerkat
+chmod 600 /root/.meerkat
+ls -l .meerkat
 ```
 
 ```
 +++ Begin screen output +++
 
-	-rw------- 1 root root 35 Jul  5 23:59 .THRecon
+	-rw------- 1 root root 35 Jul  5 23:59 .meerkat
 
 --- End screen output ---
 ```
 
 ```
-vi /root/.THRecon
-cat vi /root/.THRecon
+vi /root/.meerkat
+cat vi /root/.meerkat
 ```
 
 ```
@@ -59,7 +59,7 @@ Edit the fstab file (note that uid 500 points to the my_linux_username Linux acc
 vi /etc/fstab
 ```
 
-Add a line for THRecon; see output from "cat /etc/fstab" below
+Add a line for meerkat; see output from "cat /etc/fstab" below
 ```
 cat /etc/fstab
 ```
@@ -74,7 +74,7 @@ devpts                  /dev/pts                devpts  gid=5,mode=620  0 0
 sysfs                   /sys                    sysfs   defaults        0 0
 proc                    /proc                   proc    defaults        0 0
 /dev/VolGroup00/LogVol01 swap                   swap    defaults        0 0
-//192.168.1.137/THRecon /mnt/THRecon            cifs    auto,credentials=/root/.THRecon,uid=500,gid=500,file_mode=0777,dir_mode=0777 0 0
+//192.168.1.137/meerkat /mnt/meerkat            cifs    auto,credentials=/root/.meerkat,uid=500,gid=500,file_mode=0777,dir_mode=0777 0 0
 
 --- End screen output ---
 ```
@@ -121,13 +121,13 @@ devpts on /dev/pts type devpts (rw,gid=5,mode=620)
 tmpfs on /dev/shm type tmpfs (rw)
 none on /proc/sys/fs/binfmt_misc type binfmt_misc (rw)
 sunrpc on /var/lib/nfs/rpc_pipefs type rpc_pipefs (rw)
-THRecon on /mnt/THRecon type cifs (rw,mand)
+meerkat on /mnt/meerkat type cifs (rw,mand)
 
 --- End screen output ---
 ```
 
 ```
-ls -l /mnt/THRecon
+ls -l /mnt/meerkat
 ```
 
 ```

@@ -20,7 +20,7 @@
   - [Configure](#configure-3)
   - [Start at Boot](#start-at-boot-3)
   - [Monitor](#monitor-1)
-- [Ingest THRecon Output](#ingest-threcon-output)
+- [Ingest Meerkat Output](#ingest-meerkat-output)
 - [Administration Tips & Tricks](#administration-tips--tricks)
 - [Enable HTTPS](#enable-https)
 
@@ -200,6 +200,6 @@ Either:
 - Review the logs at c:\programdata\filebeat\logs
 - run ```..\filebeat.exe -e -v``` and review output to console
 
-# [Ingest THRecon Output](THRecon.md)
-# [Administration Tips & Tricks](https://github.com/TonyPhipps/THRecon-Elasticstack/blob/master/Administration.md)
+# [Ingest Meerkat Output](meerkat.md)
+# [Administration Tips & Tricks](https://github.com/TonyPhipps/meerkat-Elasticstack/blob/master/Administration.md)
 # [Enable HTTPS](HTTPS.md)

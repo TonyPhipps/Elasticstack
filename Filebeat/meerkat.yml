@@ -1,9 +1,9 @@
 - type: log
   symlinks: true
   paths: 
-    - c:/threcon/*ADS*.csv
-    - c:/threcon/*ads*.csv
-  tags: ["threcon","ads"]
+    - c:/meerkat/*ADS*.csv
+    - c:/meerkat/*ads*.csv
+  tags: ["meerkat","ads"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -11,9 +11,9 @@
 - type: log
   symlinks: true
   paths: 
-    - c:/threcon/*ARP*.csv
-    - c:/threcon/*arp*.csv
-  tags: ["threcon","arp"]
+    - c:/meerkat/*ARP*.csv
+    - c:/meerkat/*arp*.csv
+  tags: ["meerkat","arp"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -21,19 +21,9 @@
 - type: log
   symlinks: true
   paths: 
-  - c:/threcon/*Autoruns*.csv
-  - c:/threcon/*autoruns*.csv
-  tags: ["threcon","autoruns"]
-  # Ignore the first line with column headings
-  exclude_lines: ["^.Host"]
-  
-
-- type: log
-  symlinks: true
-  paths: 
-    - c:/threcon/*BitLocker*.csv
-    - c:/threcon/*bitlocker*.csv
-  tags: ["threcon","bitlocker"]
+  - c:/meerkat/*Autoruns*.csv
+  - c:/meerkat/*autoruns*.csv
+  tags: ["meerkat","autoruns"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -41,79 +31,9 @@
 - type: log
   symlinks: true
   paths: 
-    - c:/threcon/*Certificates*.csv
-    - c:/threcon/*certificates*.csv
-  tags: ["threcon","certificates"]
-  # Ignore the first line with column headings
-  exclude_lines: ["^.Host"]
-  
-  
-- type: log
-  symlinks: true
-  paths: 
-    - c:/threcon/*Computer*.csv
-    - c:/threcon/*computer*.csv
-  tags: ["threcon","computer"]
-  # Ignore the first line with column headings
-  exclude_lines: ["^.Host"]
-  
-  
-- type: log
-  symlinks: true
-  paths: 
-    - c:/threcon/*DLLs*.csv
-    - c:/threcon/*dlls*.csv
-  tags: ["threcon","dlls"]
-  # Ignore the first line with column headings
-  exclude_lines: ["^.Host"]
-  
-  
-- type: log
-  symlinks: true
-  paths: 
-    - c:/threcon/*DNS*.csv
-    - c:/threcon/*dns*.csv
-  tags: ["threcon","dns"]
-  # Ignore the first line with column headings
-  exclude_lines: ["^.Host"]
-  
-  
-- type: log
-  symlinks: true
-  paths: 
-    - c:/threcon/*Drivers*.csv
-    - c:/threcon/*drivers*.csv
-  tags: ["threcon","drivers"]
-  # Ignore the first line with column headings
-  exclude_lines: ["^.Host"]
-  
-  
-- type: log
-  symlinks: true
-  paths: 
-    - c:/threcon/*EnvVars*.csv
-    - c:/threcon/*envvars*.csv
-  tags: ["threcon","envvars"]
-  # Ignore the first line with column headings
-  exclude_lines: ["^.Host"]
-  
-  
-- type: log
-  symlinks: true
-  paths: 
-    - c:/threcon/*EventLogs*.csv
-    - c:/threcon/*eventlogs*.csv
-  tags: ["threcon","eventlogs"]
-  # Ignore the first line with column headings
-  exclude_lines: ["^.Host"]
-  
-  
-- type: log
-  symlinks: true
-  paths: 
-  - c:/threcon/*GroupMembers*.csv
-  - c:/threcon/*groupmembers*.csv
-  tags: ["threcon","groupmembers"]
+    - c:/meerkat/*BitLocker*.csv
+    - c:/meerkat/*bitlocker*.csv
+  tags: ["meerkat","bitlocker"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -121,9 +41,9 @@
 - type: log
   symlinks: true
   paths: 
-  - c:/threcon/*Hardware*.csv
-  - c:/threcon/*hardware*.csv
-  tags: ["threcon","hardware"]
+    - c:/meerkat/*Certificates*.csv
+    - c:/meerkat/*certificates*.csv
+  tags: ["meerkat","certificates"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -131,9 +51,9 @@
 - type: log
   symlinks: true
   paths: 
-    - c:/threcon/*Hosts*.csv
-    - c:/threcon/*hosts*.csv
-  tags: ["threcon","hosts"]
+    - c:/meerkat/*Computer*.csv
+    - c:/meerkat/*computer*.csv
+  tags: ["meerkat","computer"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -141,9 +61,9 @@
 - type: log
   symlinks: true
   paths: 
-    - c:/threcon/*Hotfixes*.csv
-    - c:/threcon/*hotfixes*.csv
-  tags: ["threcon","hotfixes"]
+    - c:/meerkat/*DLLs*.csv
+    - c:/meerkat/*dlls*.csv
+  tags: ["meerkat","dlls"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -151,9 +71,9 @@
 - type: log
   symlinks: true
   paths: 
-    - c:/threcon/*MAC*.csv
-    - c:/threcon/*mac*.csv
-  tags: ["threcon","mac"]
+    - c:/meerkat/*DNS*.csv
+    - c:/meerkat/*dns*.csv
+  tags: ["meerkat","dns"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -161,9 +81,9 @@
 - type: log
   symlinks: true
   paths: 
-    - c:/threcon/*MRU*.csv
-    - c:/threcon/*mru*.csv
-  tags: ["threcon","mru"]
+    - c:/meerkat/*Drivers*.csv
+    - c:/meerkat/*drivers*.csv
+  tags: ["meerkat","drivers"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -171,9 +91,9 @@
 - type: log
   symlinks: true
   paths: 
-    - c:/threcon/*NetAdapters*.csv
-    - c:/threcon/*netadapters*.csv
-  tags: ["threcon","netadapters"]
+    - c:/meerkat/*EnvVars*.csv
+    - c:/meerkat/*envvars*.csv
+  tags: ["meerkat","envvars"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -181,9 +101,9 @@
 - type: log
   symlinks: true
   paths: 
-    - c:/threcon/*NetRoute*.csv
-    - c:/threcon/*netroute*.csv
-  tags: ["threcon","netroute"]
+    - c:/meerkat/*EventLogs*.csv
+    - c:/meerkat/*eventlogs*.csv
+  tags: ["meerkat","eventlogs"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -191,9 +111,19 @@
 - type: log
   symlinks: true
   paths: 
-    - c:/threcon/*Processes*.csv
-    - c:/threcon/*processes*.csv
-  tags: ["threcon","processes"]
+  - c:/meerkat/*GroupMembers*.csv
+  - c:/meerkat/*groupmembers*.csv
+  tags: ["meerkat","groupmembers"]
+  # Ignore the first line with column headings
+  exclude_lines: ["^.Host"]
+  
+
+- type: log
+  symlinks: true
+  paths: 
+  - c:/meerkat/*Hardware*.csv
+  - c:/meerkat/*hardware*.csv
+  tags: ["meerkat","hardware"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -201,9 +131,9 @@
 - type: log
   symlinks: true
   paths: 
-    - c:/threcon/*RecycleBin*.csv
-    - c:/threcon/*recyclebin*.csv
-  tags: ["threcon","recyclebin"]
+    - c:/meerkat/*Hosts*.csv
+    - c:/meerkat/*hosts*.csv
+  tags: ["meerkat","hosts"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -211,9 +141,9 @@
 - type: log
   symlinks: true
   paths: 
-    - c:/threcon/*Registry*.csv
-    - c:/threcon/*registry*.csv
-  tags: ["threcon","registry"]
+    - c:/meerkat/*Hotfixes*.csv
+    - c:/meerkat/*hotfixes*.csv
+  tags: ["meerkat","hotfixes"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -221,9 +151,9 @@
 - type: log
   symlinks: true
   paths: 
-    - c:/threcon/*ScheduledTasks*.csv
-    - c:/threcon/*scheduledtasks*.csv
-  tags: ["threcon","scheduledtasks"]
+    - c:/meerkat/*MAC*.csv
+    - c:/meerkat/*mac*.csv
+  tags: ["meerkat","mac"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -231,9 +161,9 @@
 - type: log
   symlinks: true
   paths: 
-    - c:/threcon/*Services*.csv
-    - c:/threcon/*services*.csv
-  tags: ["threcon","services"]
+    - c:/meerkat/*MRU*.csv
+    - c:/meerkat/*mru*.csv
+  tags: ["meerkat","mru"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -241,9 +171,9 @@
 - type: log
   symlinks: true
   paths: 
-    - c:/threcon/*Sessions*.csv
-    - c:/threcon/*sessions*.csv
-  tags: ["threcon","sessions"]
+    - c:/meerkat/*NetAdapters*.csv
+    - c:/meerkat/*netadapters*.csv
+  tags: ["meerkat","netadapters"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -251,9 +181,9 @@
 - type: log
   symlinks: true
   paths: 
-    - c:/threcon/*Shares*.csv
-    - c:/threcon/*shares*.csv
-  tags: ["threcon","shares"]
+    - c:/meerkat/*NetRoute*.csv
+    - c:/meerkat/*netroute*.csv
+  tags: ["meerkat","netroute"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -261,9 +191,9 @@
 - type: log
   symlinks: true
   paths: 
-    - c:/threcon/*Software*.csv
-    - c:/threcon/*software*.csv
-  tags: ["threcon","software"]
+    - c:/meerkat/*Processes*.csv
+    - c:/meerkat/*processes*.csv
+  tags: ["meerkat","processes"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -271,9 +201,9 @@
 - type: log
   symlinks: true
   paths: 
-    - c:/threcon/*Strings*.csv
-    - c:/threcon/*strings*.csv
-  tags: ["threcon","strings"]
+    - c:/meerkat/*RecycleBin*.csv
+    - c:/meerkat/*recyclebin*.csv
+  tags: ["meerkat","recyclebin"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -281,9 +211,9 @@
 - type: log
   symlinks: true
   paths: 
-    - c:/threcon/*TCPConnections*.csv
-    - c:/threcon/*tcpconnections*.csv
-  tags: ["threcon","tcpconnections"]
+    - c:/meerkat/*Registry*.csv
+    - c:/meerkat/*registry*.csv
+  tags: ["meerkat","registry"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
   
@@ -291,8 +221,78 @@
 - type: log
   symlinks: true
   paths: 
-    - c:/threcon/*TPM*.csv
-    - c:/threcon/*tpm*.csv
-  tags: ["threcon","tpm"]
+    - c:/meerkat/*ScheduledTasks*.csv
+    - c:/meerkat/*scheduledtasks*.csv
+  tags: ["meerkat","scheduledtasks"]
+  # Ignore the first line with column headings
+  exclude_lines: ["^.Host"]
+  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - c:/meerkat/*Services*.csv
+    - c:/meerkat/*services*.csv
+  tags: ["meerkat","services"]
+  # Ignore the first line with column headings
+  exclude_lines: ["^.Host"]
+  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - c:/meerkat/*Sessions*.csv
+    - c:/meerkat/*sessions*.csv
+  tags: ["meerkat","sessions"]
+  # Ignore the first line with column headings
+  exclude_lines: ["^.Host"]
+  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - c:/meerkat/*Shares*.csv
+    - c:/meerkat/*shares*.csv
+  tags: ["meerkat","shares"]
+  # Ignore the first line with column headings
+  exclude_lines: ["^.Host"]
+  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - c:/meerkat/*Software*.csv
+    - c:/meerkat/*software*.csv
+  tags: ["meerkat","software"]
+  # Ignore the first line with column headings
+  exclude_lines: ["^.Host"]
+  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - c:/meerkat/*Strings*.csv
+    - c:/meerkat/*strings*.csv
+  tags: ["meerkat","strings"]
+  # Ignore the first line with column headings
+  exclude_lines: ["^.Host"]
+  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - c:/meerkat/*TCPConnections*.csv
+    - c:/meerkat/*tcpconnections*.csv
+  tags: ["meerkat","tcpconnections"]
+  # Ignore the first line with column headings
+  exclude_lines: ["^.Host"]
+  
+  
+- type: log
+  symlinks: true
+  paths: 
+    - c:/meerkat/*TPM*.csv
+    - c:/meerkat/*tpm*.csv
+  tags: ["meerkat","tpm"]
   # Ignore the first line with column headings
   exclude_lines: ["^.Host"]
