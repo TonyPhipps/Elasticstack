@@ -31,8 +31,8 @@ winlogbeat.event_logs:
 
   - name: System
     ignore_older: 30m
-  - name: Microsoft-windows-sysmon/operational
 
+  - name: Microsoft-windows-sysmon/operational
     ignore_older: 30m
     processors:
       - script:
