@@ -1,36 +1,79 @@
+- [Ubuntu](#ubuntu)
+  - [Set Static IPs](#set-static-ips)
 - [Elasticsearch](#elasticsearch)
   - [Install](#install)
-  - [Configure](#configure)
-  - [Start at Boot](#start-at-boot)
+  - [Enable Service, Run, and Verify](#enable-service-run-and-verify)
   - [Manage Service](#manage-service)
-  - [Check Status](#check-status)
+  - [Check Status and Monitor](#check-status-and-monitor)
+  - [Configure](#configure)
 - [Kibana](#kibana)
   - [Install](#install-1)
-  - [Configure](#configure-1)
-  - [Start at Boot](#start-at-boot-1)
+  - [Enable Service, Run, and Verify](#enable-service-run-and-verify-1)
   - [Manage Service](#manage-service-1)
+  - [Check Status and Monitor](#check-status-and-monitor-1)
+  - [Configure](#configure-1)
+  - [Setup Index Patterns](#setup-index-patterns)
 - [Logstash](#logstash)
   - [Install](#install-2)
-  - [Configure](#configure-2)
-  - [Start at Boot](#start-at-boot-2)
+  - [Enable Service, Run, and Verify](#enable-service-run-and-verify-2)
   - [Manage Service](#manage-service-2)
-  - [Monitor](#monitor)
-- [Filebeat](#filebeat)
+  - [Check Status and Monitor](#check-status-and-monitor-2)
+  - [Configure](#configure-2)
+- [WinLogBeat](#winlogbeat)
+  - [Prepare LogStash for Receipt of Logs](#prepare-logstash-for-receipt-of-logs)
   - [Install](#install-3)
   - [Configure](#configure-3)
-  - [Start at Boot](#start-at-boot-3)
-  - [Monitor](#monitor-1)
-- [Ingest Meerkat Output](#ingest-meerkat-output)
-- [Administration Tips & Tricks](#administration-tips--tricks)
-- [Enable HTTPS](#enable-https)
+- [Filebeat](#filebeat)
+  - [Install](#install-4)
+  - [Configure](#configure-4)
+  - [Start at Boot](#start-at-boot)
+  - [Monitor](#monitor)
+- [What Next?](#what-next)
 
-This guide was written primarily with [Xubuntu](https://xubuntu.org/about/) 18.04.1 in mind, but can easily be adjusted to any other distribution.
+This guide was written primarily with Ubuntu 18.04 LTS in mind, but can easily be adjusted to any other distribution. It is primarily comprised of condensed versions of the following guides:
+- https://www.omgubuntu.co.uk/2018/09/hyper-v-ubuntu-1804-windows-integration
+- https://www.elastic.co/guide/en/elasticsearch/reference/7.6/deb.html
+- https://www.elastic.co/guide/en/kibana/7.1/install.html
+- https://www.elastic.co/guide/en/logstash/7.1/installing-logstash.html
+- https://www.elastic.co/guide/en/logstash/7.1/running-logstash.html
+- https://www.elastic.co/guide/en/beats/winlogbeat/current/config-winlogbeat-logstash.html
+- https://www.elastic.co/guide/en/beats/winlogbeat/master/logstash-output.html
+- https://www.elastic.co/guide/en/beats/filebeat/master/filebeat-installation.html
+- http://wiki.friendlyarm.com/wiki/index.php/Use_NetworkManager_to_configure_network_settings
+
+# Ubuntu
+Do NOT select the option to log in automatically. This has been known to cause issues with the first logon. It won't cost you much time to test this, so feel free to ignore my advice to see if things have changed.
+
+Install updates
+```
+sudo bash
+apt-get update
+apt-get upgrade
+```
+
+## Set Static IPs
+
+Set up static IPs so your systems can point to each other properly. If you are running all services on one box, this and other related steps can be ignored or set to 127.0.0.1 // localhost.
+
+Get your default gateway (usually your Hyper-V server name)
+```
+ip route show
+```
+
+List the available connections Network Manager knows about
+```
+nmcli con show
+```
+
+Set your static IP. Use your default gateway as your dns
+```
+nmcli connection modify 'Wired connection 1' connection.autoconnect yes ipv4.method manual ipv4.address 172.17.158.2/28 ipv4.gateway 172.17.158.1 ipv4.dns 172.17.158.1
+reboot
+```
+
 
 
 # Elasticsearch
-Condensed version of the below guide compiled using Xubuntu
-
-https://www.elastic.co/guide/en/elasticsearch/reference/7.1/deb.html#deb-repo
 
 ## Install
 ```
@@ -39,20 +82,16 @@ apt-get install curl
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 apt-get install apt-transport-https
 echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
-apt-get update && sudo apt-get install elasticsearch
+apt-get update
+apt-get install elasticsearch
 ```
 
-## Configure
-Edit /etc/elasticsearch/elasticsearch.yml
+## Enable Service, Run, and Verify
 ```
-network.host: 0.0.0.0
-cluster.initial_master_nodes: ["node-1", "node-2"]
-```
-
-## Start at Boot
-```
-/bin/systemctl daemon-reload
-/bin/systemctl enable elasticsearch.service
+sudo /bin/systemctl daemon-reload
+sudo /bin/systemctl enable elasticsearch.service
+apt-get install curl
+curl -X GET localhost:9200
 ```
 
 ## Manage Service
@@ -62,33 +101,48 @@ systemctl start elasticsearch.service
 systemctl restart elasticsearch.service
 ```
 
-## Check Status
+## Check Status and Monitor
 ```
 systemctl status elasticsearch.service
-curl -X GET http://127.0.0.1:9200
 ```
-
-# Kibana
-Condensed version of the below guide compiled using Xubuntu
-
-https://www.elastic.co/guide/en/kibana/7.1/install.html
-
-## Install
 ```
-apt-get update && sudo apt-get install kibana
+journalctl -u elasticsearch.service -f
 ```
 
 ## Configure
-Edit /etc/kibana/kibana.yml
+The following will allow Kibana to reach this server
+
+Edit /etc/elasticsearch/elasticsearch.yml
 ```
-server.host: "0"
+network.host: 0.0.0.0
+cluster.initial_master_nodes: ["node-1", "node-2"]
+```
+```
+systemctl restart elasticsearch.service
 ```
 
-## Start at Boot
+# Kibana
+
+
+## Install
+
+```
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+apt-get install apt-transport-https
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+apt-get update
+apt-get install kibana
+```
+
+
+
+## Enable Service, Run, and Verify
 ```
 /bin/systemctl daemon-reload
 /bin/systemctl enable kibana.service
 ```
+Allow the service a moment to start, then visit localhost:5601
+
 
 ## Manage Service
 ```
@@ -97,18 +151,51 @@ systemctl start kibana.service
 systemctl restart kibana.service
 ```
 
+## Check Status and Monitor
+```
+systemctl status kibana.service
+```
+```
+journalctl -u kibana.service -f
+```
+
+
+## Configure
+Edit /etc/kibana/kibana.yml
+```
+server.host: "0.0.0.0"
+server.name: "kibana-vm"
+elasticsearch.hosts:["http://elasticsearch-vm:9200"]
+```
+Ensure permissions on kibana folders and files are allowing the logstash account access
+```
+chown kibana:kibana /etc/kibana -R
+chown kibana:kibana /var/log/kibana -R
+chown kibana:kibana /var/lib/kibana -R
+chown kibana:kibana /etc/default/kibana -R
+```
+```
+systemctl restart kibana.service
+```
+
+## Setup Index Patterns
+For each new event feed, you'll likely be setting up new Elasticsearch indices. For each one, you'll need to set up Index Patterns under Kibana's Management > Kibana > Index Patterns setup interface.
+
+If you set up winlogbeat with mostly defaults, you'd use index pattern "winlogbeat*" with the @timestamp as your Time Filter.
+
+
 # Logstash
-Condensed version of the below guides compiled using Xubuntu
 
-https://www.elastic.co/guide/en/logstash/7.1/installing-logstash.html
-
-https://www.elastic.co/guide/en/logstash/7.1/running-logstash.html
 
 ## Install
 ```
 apt-get install default-jre
 update-alternatives --config java
-apt-get update && sudo apt-get install logstash
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+apt-get install apt-transport-https
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+apt-get update
+apt-get install logstash
 ```
 
 Determine java location
@@ -116,36 +203,15 @@ Determine java location
 update-java-alternatives --list
 ```
 
-Edit /etc/environment
+Append a JAVA_HOME environment variable
 ```
-JAVA_HOME="/your/java/location"
-```
-```
+echo 'JAVA_HOME="/your/java/location"' | sudo tee -a /etc/environment
 source /etc/environment
 echo $JAVA_HOME
 ```
 
-## Configure
 
-Edit /etc/logstash/logstash.yml
-```
-path.data: /var/lib/logstash
-path.logs: /var/log/logstash
-path.config: /etc/logstash
-config.reload.automatic: true
-config.reload.interval: 30s
-log.level: warn
-```
-
-Ensure permissions on logstash folders and files are allowing the logstash account access
-```
-chown logstash:logstash /etc/logstash -R
-chown logstash:logstash /var/log/logstash -R
-chown logstash:logstash /var/lib/logstash -R
-chown logstash:logstash /etc/default/logstash
-```
-
-## Start at Boot
+## Enable Service, Run, and Verify
 ```
 /bin/systemctl daemon-reload
 /bin/systemctl enable logstash.service
@@ -158,15 +224,74 @@ systemctl start logstash.service
 systemctl restart logstash.service
 ```
 
-## Monitor
+## Check Status and Monitor
+```
+systemctl status logstash.service
+```
 ```
 /usr/share/logstash/bin/logstash --path.settings /etc/logstash --log.level=debug
+journalctl -u logstash.service -f
 ```
 
-# Filebeat
-Condensed version of the below guides compiled using Xubuntu
 
-https://www.elastic.co/guide/en/beats/filebeat/master/filebeat-installation.html
+## Configure
+
+Edit /etc/logstash/logstash.yml
+```
+path.data: /var/lib/logstash
+config.reload.automatic: true
+config.reload.interval: 30s
+log.level: warn
+path.logs: /var/log/logstash
+```
+
+Ensure permissions on logstash folders and files are allowing the logstash account access
+```
+chown logstash:logstash /etc/logstash -R
+chown logstash:logstash /var/log/logstash -R
+chown logstash:logstash /var/lib/logstash -R
+chown logstash:logstash /etc/default/logstash
+```
+
+# WinLogBeat
+
+## Prepare LogStash for Receipt of Logs
+Create /etc/logstash/conf.d/winlogbeat.yml:
+```
+input {
+  beats {
+    port => 5044
+  }
+}
+
+output {
+  elasticsearch {
+    hosts => ["http://172.17.158.2:9200"]
+    index => "%{[@metadata][beat]}-%{[@metadata][version]}" 
+  }
+}
+```
+
+## Install
+https://www.elastic.co/downloads/beats/winlogbeat
+
+## Configure
+- Edit winlogbeat.yml. Comment out Elasticsearch lines and uncomment Logstash lines.
+
+```
+#-------------------------- Elasticsearch output ------------------------------
+#output.elasticsearch:
+  #hosts: ["localhost:9200"]
+
+#----------------------------- Logstash output --------------------------------
+output.logstash:
+hosts: ["172.17.158.3:5044"]
+```
+
+
+
+# Filebeat
+
 
 ## Install
 
@@ -200,6 +325,7 @@ Either:
 - Review the logs at c:\programdata\filebeat\logs
 - run ```..\filebeat.exe -e -v``` and review output to console
 
-# [Ingest Meerkat Output](Meerkat.md)
-# [Administration Tips & Tricks](https://github.com/TonyPhipps/Elasticstack/blob/master/Administration.md)
-# [Enable HTTPS](HTTPS.md)
+# What Next?
+- [Ingest Meerkat Output](Meerkat.md)
+- [Administration Tips & Tricks](https://github.com/TonyPhipps/Elasticstack/blob/master/Administration.md)
+- [Enable HTTPS](HTTPS.md)
