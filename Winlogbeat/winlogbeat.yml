@@ -20,27 +20,30 @@
 winlogbeat.event_logs:
   - name: Application
     ignore_older: 30m
-    tags: ["winlogbeat","application"]
   - name: Security
     ignore_older: 30m
-    tags: ["winlogbeat","security"]
+    processors:
+      - script:
+          lang: javascript
+          id: security
+          file: ${path.home}/module/security/config/winlogbeat-security.js
   - name: System
     ignore_older: 30m
-    tags: ["winlogbeat","system"]
   - name: Microsoft-windows-sysmon/operational
     ignore_older: 30m
-    tags: ["winlogbeat","sysmon"]
+    processors:
+      - script:
+          lang: javascript
+          id: sysmon
+          file: ${path.home}/module/sysmon/config/winlogbeat-sysmon.js
   - name: Microsoft-windows-PowerShell/Operational
     ignore_older: 30m
     event_id: 4103, 4104
-    tags: ["winlogbeat","powershell"]
   - name: Windows PowerShell
     event_id: 400,600
     ignore_older: 30m
-    tags: ["winlogbeat","powershell"]
   - name: Microsoft-Windows-WMI-Activity/Operational
     event_id: 5857,5858,5859,5860,5861
-    tags: ["winlogbeat","wmiactivity"]
 
 #==================== Elasticsearch template setting ==========================
 
@@ -124,7 +127,7 @@ setup.kibana:
 #----------------------------- Logstash output --------------------------------
 output.logstash:
   # The Logstash hosts
-  hosts: ["172.30.211.88:9600"]
+  hosts: ["172.17.158.3:5044"]
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications
