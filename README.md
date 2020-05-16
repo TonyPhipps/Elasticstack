@@ -1,5 +1,6 @@
 - [Ubuntu](#ubuntu)
-  - [Set Static IPs](#set-static-ips)
+  - [Set Up NAT on a Virtual Switch](#set-up-nat-on-a-virtual-switch)
+  - [Set Up Static IPs](#set-up-static-ips)
 - [Elasticsearch](#elasticsearch)
   - [Install](#install)
   - [Enable Service, Run, and Verify](#enable-service-run-and-verify)
@@ -40,6 +41,7 @@ This guide was written primarily with Ubuntu 18.04 LTS in mind, but can easily b
 - https://www.elastic.co/guide/en/beats/winlogbeat/master/logstash-output.html
 - https://www.elastic.co/guide/en/beats/filebeat/master/filebeat-installation.html
 - http://wiki.friendlyarm.com/wiki/index.php/Use_NetworkManager_to_configure_network_settings
+- https://anandthearchitect.com/2018/01/06/windows-10-how-to-setup-nat-network-for-hyper-v-guests/
 
 # Ubuntu
 Do NOT select the option to log in automatically. This has been known to cause issues with the first logon. It won't cost you much time to test this, so feel free to ignore my advice to see if things have changed.
@@ -51,23 +53,27 @@ apt-get update
 apt-get upgrade
 ```
 
-## Set Static IPs
+## Set Up NAT on a Virtual Switch
+
+Open PowerShell and enter the following commands to set up a virtual switch
+```
+# Create Hyper-V internal only switch. 
+New-VMSwitch –SwitchName “NAT-Switch” –SwitchType Internal –Verbose
+
+# Note the IfIndex of NAT-Switch of the next command's output
+Get-NetAdapter
+
+# Create NAT Gateway
+New-NetIPAddress –IPAddress 192.168.200.1 -PrefixLength 24 -InterfaceIndex ## –Verbose
+```
+
+## Set Up Static IPs
 
 Set up static IPs so your systems can point to each other properly. If you are running all services on one box, this and other related steps can be ignored or set to 127.0.0.1 // localhost.
 
-Get your default gateway (usually your Hyper-V server name)
+Set your static IP. Use your home router IP as your DNS
 ```
-ip route show
-```
-
-List the available connections Network Manager knows about
-```
-nmcli con show
-```
-
-Set your static IP. Use your default gateway as your dns
-```
-nmcli connection modify 'Wired connection 1' connection.autoconnect yes ipv4.method manual ipv4.address 172.17.158.2/28 ipv4.gateway 172.17.158.1 ipv4.dns 172.17.158.1
+nmcli connection modify 'Wired connection 1' connection.autoconnect yes ipv4.method manual ipv4.address 192.168.200.3/28 ipv4.gateway 192.168.200.1 ipv4.dns 192.168.1.1
 reboot
 ```
 
