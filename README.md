@@ -175,7 +175,7 @@ Edit /etc/kibana/kibana.yml
 ```
 server.host: "0.0.0.0"
 server.name: "kibana-vm"
-elasticsearch.hosts:["http://elasticsearch-vm:9200"]
+elasticsearch.hosts:["http://192.168.200.2:9200"]
 ```
 Ensure permissions on kibana folders and files are allowing the logstash account access
 ```
@@ -276,7 +276,7 @@ input {
 
 output {
   elasticsearch {
-    hosts => ["http://172.17.158.2:9200"]
+    hosts => ["http://19.168.200.2:9200"]
     index => "%{[@metadata][beat]}-%{[@metadata][version]}" 
   }
 }
@@ -295,7 +295,7 @@ https://www.elastic.co/downloads/beats/winlogbeat
 
 #----------------------------- Logstash output --------------------------------
 output.logstash:
-hosts: ["172.17.158.3:5044"]
+hosts: ["192.168.200.3:5044"]
 ```
 
 
@@ -322,7 +322,7 @@ Edit filebeat.yml, comment out Elasticsearch section and uncomment Logstash sect
 
 output.logstash:
   # The Logstash hosts
-  hosts: ["172.30.211.88:9600"]
+  hosts: ["192.168.200.3:9600"]
 ```
 
 ## Start at Boot
