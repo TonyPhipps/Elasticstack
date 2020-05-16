@@ -65,6 +65,10 @@ Get-NetAdapter
 
 # Create NAT Gateway
 New-NetIPAddress –IPAddress 192.168.200.1 -PrefixLength 24 -InterfaceIndex ## –Verbose
+
+# Assign each guest VM to this new adapter
+Get-VM YourVMName | Get-VMNetworkAdapter | Connect-VMNetworkAdapter –SwitchName “NAT-Switch”
+
 ```
 
 ## Set Up Static IPs
@@ -73,7 +77,7 @@ Set up static IPs so your systems can point to each other properly. If you are r
 
 Set your static IP. Use your home router IP as your DNS
 ```
-nmcli connection modify 'Wired connection 1' connection.autoconnect yes ipv4.method manual ipv4.address 192.168.200.3/28 ipv4.gateway 192.168.200.1 ipv4.dns 192.168.1.1
+nmcli connection modify 'Wired connection 1' connection.autoconnect yes ipv4.method manual ipv4.address 192.168.200.2/28 ipv4.gateway 192.168.200.1 ipv4.dns 192.168.1.1
 reboot
 ```
 
